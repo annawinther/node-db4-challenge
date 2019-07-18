@@ -7,12 +7,12 @@ const server = express();
 server.use(express.json());
 // server.use('/api/recipes/', RecipesRouter);
 
-server.get('/', async (req, res) => {
+server.get('/recipes', async (req, res) => {
     try {
-      const recipes = await db.getShoppingList(req.params.id);
+      const recipes = await db.getRecipes();
       res.json(recipes);
     } catch (err) {
-      res.status(500).json({ message: 'Failed to get schemes' });
+      res.status(500).json({ message: 'Failed to get the recipes' });
     }
   });
   
