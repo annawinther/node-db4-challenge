@@ -5,18 +5,22 @@ exports.up = function(knex) {
         table.increments();
         table
             .integer('recipe_id')
-            .unsigned()
+            // .unsigned()
             .notNullable()
             .references('id')
-            .inTable('recipes');
+            .inTable('recipes')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
         table
             .integer('ingredient_id')
-            .unsigned()
+            // .unsigned()
             .notNullable()
             .references('id')
-            .inTable('ingredients');
+            .inTable('ingredients')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
         table
-            .integer('quanity')
+            .integer('quantity')
             .notNullable();
     })
 };

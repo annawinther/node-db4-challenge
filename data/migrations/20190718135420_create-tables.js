@@ -12,6 +12,11 @@ exports.up = function(knex) {
         table.text('ingredient_name')
             .unique()
             .notNullable();
+        // table.integer('recipe_id')
+        // // .unsigned()
+        // // .notNullable()
+        // .references('id')
+        // .inTable('recipes');
     })
     .createTable('steps', table => {
         table.increments();
@@ -23,7 +28,7 @@ exports.up = function(knex) {
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
         table.integer('step_number')
-            .unsigned()
+            // .unsigned()
             .notNullable();
         table.text('instructions')
             .notNullable()
