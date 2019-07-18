@@ -40,3 +40,10 @@ function getInstructions(id){
         .where({ recipe_id: id })
         .orderBy('step_number')
 }
+
+
+module.exports = {
+    getRecipes,
+    getShoppingList,
+    getInstructions
+}
