@@ -15,7 +15,26 @@ server.get('/recipes', async (req, res) => {
       res.status(500).json({ message: 'Failed to get the recipes' });
     }
   });
-  
+
+server.get('/recipes/:id', async (req, res) => {
+    try {
+        const recipes = await db.getRecipesById(req.params.id);
+        res.json(recipes);
+      } catch (err) {
+        res.status(500).json({ message: 'Failed to get the recipes' });
+      }
+})
+
+server.get('/api/recipes/:id/shoppingList', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const recipeId = await getRecipesById(id);
+        const ingredients = await db.getShoppingList(recipeId);
+        res.json(ingredients)
+    } catch (err) {
+        res.status(500).json({ message: 'Failed to get the recipes' });
+    }
+})
 //   server.get('/:id', async (req, res) => {
 //     const { id } = req.params;
   

@@ -4,7 +4,9 @@ const db = knex(require('../knexfile').development);
 function getRecipes(){
     return db('recipes');
 }
-
+function getRecipesById(id){
+    return db('recipes').where({ id });
+}
 function getShoppingList(id){
     // should return a list of ingredients and quantities
     // for a given recipe
@@ -44,6 +46,7 @@ function getInstructions(id){
 
 module.exports = {
     getRecipes,
+    getRecipesById,
     getShoppingList,
     getInstructions
 }
